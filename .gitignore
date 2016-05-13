@@ -1,5 +1,6 @@
 hlc/venv
 *.wsgi
+*.pyc
 
 # Compiled source #
 ###################
