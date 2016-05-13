@@ -1,6 +1,7 @@
 hlc/venv
 *.wsgi
 *.pyc
+hlc/settings.py
 
 # Compiled source #
 ###################
@@ -39,4 +40,3 @@ hlc/venv
 .Trashes
 ehthumbs.db
 Thumbs.db
-
