@@ -2,13 +2,13 @@ import datetime
 import settings
 
 from api import get_user_data as data_handler
-from flask import Flask, jsonify, make_response
+from flask import Flask, jsonify, make_response, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello():
-	return "In development: Healthy Living Challenge"
+	return render_template('index.html')
 
 
 @app.route("/api/data", methods=['GET'])
