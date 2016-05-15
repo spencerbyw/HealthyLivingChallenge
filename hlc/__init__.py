@@ -1,3 +1,4 @@
+import datetime
 import settings
 
 from api import get_user_data as data_handler
@@ -12,7 +13,10 @@ def hello():
 
 @app.route("/api/data", methods=['GET'])
 def deliver_user_data():
+	start_time = datetime.datetime.now()
 	response = make_response(data_handler.get_user_data())
+	delta = datetime.datetime.now() - start_time
+	print 'Score building took: {}'.format(delta)
 	response.headers['Access-Control-Allow-Origin'] = "*"
 	return response
 

@@ -1,5 +1,6 @@
 import calculators as calc
 import csv
+import ranking
 import settings
 import urllib2
 
@@ -14,6 +15,29 @@ def assemble_score_dict():
     #     for row in rdr:
     #         rows.append(row)
 
+    rows_by_people = csv_to_data_dict(rows)
+    # We now have a legible list of scores to send to the calculator.
+    for person in rows_by_people.iteritems():
+        score_dict['scores'][person[0]] = {'scores_by_date': {}}
+        for date_list in person[1].iteritems():
+            day_score = calculate_single(date_list[1][-1])
+            score_dict['scores'][person[0]]['scores_by_date'][date_list[0]] = \
+                day_score
+        day_score_pairs = score_dict['scores'][person[0]]['scores_by_date'].iteritems()
+        all_scores = [pair[1] for pair in day_score_pairs]
+        score_dict['scores'][person[0]]['total_score'] = sum(all_scores)
+
+    score_dict = _add_rankings(score_dict)
+    return score_dict
+
+
+def fetch_drive_csv(url):
+    response = urllib2.urlopen(url)
+    rows = csv.reader(response)
+    return list(rows)
+
+
+def csv_to_data_dict(rows):
     # Process header row
     rows.reverse()
     header_row = rows.pop()
@@ -35,24 +59,7 @@ def assemble_score_dict():
             # print '0: {}, 1: {}'.format(full_date, name)
             rows_by_people[name] = {full_date.split(' ')[0]: [row]}
 
-    # We now have a legible list of scores to send to the calculator.
-    for person in rows_by_people.iteritems():
-        score_dict['scores'][person[0]] = {'scores_by_date': {}}
-        for date_list in person[1].iteritems():
-            day_score = calculate_single(date_list[1][-1])
-            score_dict['scores'][person[0]]['scores_by_date'][date_list[0]] = \
-                day_score
-        day_score_pairs = score_dict['scores'][person[0]]['scores_by_date'].iteritems()
-        all_scores = [pair[1] for pair in day_score_pairs]
-        score_dict['scores'][person[0]]['total_score'] = sum(all_scores)
-
-    return score_dict
-
-
-def fetch_drive_csv(url):
-    response = urllib2.urlopen(url)
-    rows = csv.reader(response)
-    return list(rows)
+    return rows_by_people
 
 
 def calculate_single(data_arr):
@@ -61,3 +68,13 @@ def calculate_single(data_arr):
     bonus_points = calc.bonus_points(data_arr[6])
     accountability = calc.accountability(data_arr[7:])
     return sum([big_six, single_points, bonus_points, accountability])
+
+
+def _add_rankings(score_dict):
+    # Assemble a USER: TOTAL_SCORE dict
+    user_score_pairs = [(user[0], user[1]['total_score']) for user in score_dict['scores'].iteritems()]
+    user_score_pairs.sort(key=lambda x: x[1], reverse=True)
+    rankings = list(ranking.Ranking(user_score_pairs, start=1, key=lambda x: x[1]))
+    for rank in rankings:
+        score_dict['scores'][rank[1][0]]['ranking'] = rank[0]
+    return score_dict
