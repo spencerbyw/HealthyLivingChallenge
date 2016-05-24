@@ -41,6 +41,9 @@ h1 {
     font-size: 3.5rem;
     font-style: italic; }
 
+.score-chart {
+  background-color: #fcfcfc; }
+
 a {
   color: #fcfcfc;
   text-decoration: underline; }

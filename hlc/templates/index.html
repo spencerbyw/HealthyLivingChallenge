@@ -5,6 +5,9 @@
   <title>Healthy Living Challenge</title>
   <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Chartist styles -->
+  <link rel="stylesheet" href="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+  <script src="http://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
 </head>
 <body>
   <h1 class="center">hlc</h1>
@@ -35,6 +38,30 @@
     </div>
   </div>
   {% endfor %}
+  <div class="score-chart p2">
+    <div class="ct-chart ct-perfect-fourth"></div>
+  </div>
   <div class="footer center h3 p4">&copy; Copyright {{ year }} <a href="http://spencerbywater.com">Spencer Bywater</a></div>
+  <script>
+    new Chartist.Line('.ct-chart', {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      series: [
+        [2, 3, 2, 4, 5],
+        [0, 2, 3, 2, 3],
+        [1, 2, 2, 3, 4],
+        [89,08,9,8,9,89,9,9,8],
+        [67,55,1,77,6,65,4,3],
+        [12,21,94,46,76,23,75,34],
+        [12,56,23,87,67,45,43,23],
+        [12,21,21,13,42,53,56,76],
+        [12,98,67,56,45,34,32,21],
+      ]
+    }, {
+      fullWidth: true,
+      axisY: {
+        onlyInteger: true
+      }
+    });
+  </script>
 </body>
 </html>

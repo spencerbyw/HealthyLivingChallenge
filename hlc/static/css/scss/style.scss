@@ -1,5 +1,6 @@
 @import 'imports';
 @import 'constants';
+@import 'chartist_custom';
 
 body {
   font-family: $font-fam;
@@ -61,6 +62,10 @@ h1 {
       font-style: italic;
     }
   }
+}
+
+.score-chart {
+  background-color: $white;
 }
 
 a {
