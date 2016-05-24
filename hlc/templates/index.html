@@ -16,23 +16,9 @@
   {% for score in scores %}
   {% if score[1].ranking == 1 %}
   <div class="special score flex p2 rounded">
-    <div class="place col-2 p2">
-      <div class="center mx-auto">{{ score[1].ranking }}<span>{{ score[1].ordinal }}</span></div>
-    </div>
-    <div class="points col-3 p2 flex items-center justify-center">
-      <div>
-        <div class="points-total flex h2 justify-center">{{ score[1].total_score}}</div>
-        <div class="points-word center">POINTS</div>
-      </div>
-    </div>
-    <div class="details flex items-center flex-auto">
-      <div class="details-container">
-        <div class="name">{{ score[0] }}</div>
-      </div>
-    </div>
-  </div>
   {% else %}
   <div class="score flex p2 rounded">
+  {% endif %}
     <div class="place col-2 p2">
       <div class="center mx-auto">{{ score[1].ranking }}<span>{{ score[1].ordinal }}</span></div>
     </div>
@@ -48,7 +34,6 @@
       </div>
     </div>
   </div>
-  {% endif %}
   {% endfor %}
   <div class="footer center h3 p4">&copy; Copyright {{ year }} <a href="http://spencerbywater.com">Spencer Bywater</a></div>
 </body>
