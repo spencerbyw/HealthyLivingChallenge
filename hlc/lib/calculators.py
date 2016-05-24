@@ -22,7 +22,7 @@ def big_six(answers):
 
     truth.append(veggie_servings)
     truth.append(fruit_servings)
-    
+
     if all(item for item in truth):
         partial_score += 5
 
@@ -46,7 +46,7 @@ def single_points(answers):
 
 def bonus_points(answers):
     partial_score = 0
-    checkbox_answers = {"deliberately get some exercise?": False,
+    checkbox_answers = {"deliberately get 15+ minutes of exercise?": False,
                         "go to the temple today?": False}
 
     for pair in checkbox_answers.iteritems():
@@ -65,7 +65,7 @@ def accountability(answers):
         partial_score += 2
 
     if answers[1] == 'Yes':
-        partial_score -= 1
+        partial_score -= 2
     else:
-        partial_score += 1
+        partial_score += 2
     return partial_score

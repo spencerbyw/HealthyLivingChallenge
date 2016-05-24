@@ -78,3 +78,6 @@ def _add_rankings(score_dict):
     for rank in rankings:
         score_dict['scores'][rank[1][0]]['ranking'] = rank[0]
     return score_dict
+
+def ordinal(n):
+    return "%s" % ("tsnrhtdd"[(n/10%10!=1)*(n%10<4)*n%10::4])

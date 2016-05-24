@@ -1,0 +1,69 @@
+@import 'imports';
+@import 'constants';
+
+body {
+  font-family: $font-fam;
+  background-color: $dark;
+  color: #fcfcfc;
+}
+
+h1 {
+  font-size: 16rem;
+  font-weight: 700;
+  line-height: 1%;
+}
+
+.opener {
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+
+.score {
+  background-color: $row-dark;
+  margin-bottom: 0.2rem;
+  border-bottom: 0.2rem solid $light-orange;
+
+  &.special {
+    background-color: $special-row-dark;
+  }
+
+  .place {
+    color: $lime;
+    div {
+      font-size: 5.5rem;
+      font-weight: 700;
+      span {
+        font-size: 2.25rem;
+      }
+    }
+  }
+
+  .points {
+    color: $light-blue;
+    vertical-align: middle;
+
+    .points-total {
+      font-size: 4.5rem;
+      font-weight: 700;
+    }
+
+    .points-word {
+      font-size: 1.25rem;
+      line-height: 50%;
+      text-transform: uppercase;
+      color: $white;
+    }
+  }
+
+  .details {
+    .name {
+      font-size: 3.5rem;
+      font-style: italic;
+    }
+  }
+}
+
+a {
+  color: $white;
+  text-decoration: underline;
+}
