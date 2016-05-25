@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Healthy Living Challenge</title>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
   <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -36,5 +37,17 @@
   </div>
   {% endfor %}
   <div class="footer center h3 p4">&copy; Copyright {{ year }} <a href="http://spencerbywater.com">Spencer Bywater</a></div>
+  <script src="{{ url_for('static', filename='scripts/countUp.min.js') }}"></script>
+  <script>
+    var selector = ".points-total";
+    var special_scores = document.querySelectorAll(selector);
+    console.log(special_scores);
+    for (var i = 0, len = special_scores.length; i < len; i++) {
+      var new_id = special_scores[i].id = "cu" + i;
+      var count_to = Number(special_scores[i].innerText);
+      var cu = new CountUp(new_id, 0, count_to);
+      cu.start();
+    }
+  </script>
 </body>
 </html>
