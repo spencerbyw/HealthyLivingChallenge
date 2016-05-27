@@ -6,8 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png')}}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
   <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/apple-icon.png') }}">
+
+  <!-- Web app configuration -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="hlc">
+  <link rel="apple-touch-startup-image" href="{{ url_for('static', filename='img/splash.png') }}">
+
 </head>
 <body>
   <!-- <h1 class="center">hlc</h1> -->
