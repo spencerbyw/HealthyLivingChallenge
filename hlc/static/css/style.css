@@ -5,13 +5,7 @@ body {
   color: #fcfcfc; }
 
 h1 {
-  font-size: 16rem;
-  font-weight: 700;
-  line-height: 1%; }
-
-.opener {
-  font-size: 1.5rem;
-  line-height: 3rem; }
+  font-weight: 700; }
 
 .score {
   background-color: #1d2443;
@@ -22,25 +16,59 @@ h1 {
   .score .place {
     color: #bcff50; }
     .score .place div {
-      font-size: 5.5rem;
+      font-size: 3rem;
       font-weight: 700; }
       .score .place div span {
-        font-size: 2.25rem; }
+        font-size: 1rem; }
   .score .points {
     color: #06c5ff;
     vertical-align: middle; }
     .score .points .points-total {
-      font-size: 4.5rem;
+      font-size: 2.5rem;
       font-weight: 700; }
     .score .points .points-word {
-      font-size: 1.25rem;
+      font-size: 0.75rem;
       line-height: 50%;
       text-transform: uppercase;
       color: #fcfcfc; }
   .score .details .name {
-    font-size: 3.5rem;
+    font-size: 2rem;
     font-style: italic; }
 
 a {
   color: #fcfcfc;
   text-decoration: underline; }
+
+.survey-link-container {
+  text-align: center; }
+
+a.survey-link {
+  text-decoration: none;
+  background: #fc2792;
+  color: #fcfcfc;
+  box-shadow: 0 6px #a10252;
+  transition: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  border-radius: 0.25rem;
+  display: inline-block;
+  padding: 1rem;
+  margin: .5rem 0rem 2rem 0rem;
+  text-align: center;
+  position: relative; }
+  a.survey-link:hover {
+    box-shadow: 0 4px #a10252;
+    top: 2px; }
+  a.survey-link:active {
+    box-shadow: 0 0 #a10252;
+    top: 6px; }
+
+.footer {
+  padding: 64px 0; }
+
+.hlc-logo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-top: 2rem;
+  margin-bottom: 2rem; }

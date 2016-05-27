@@ -3,27 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>Healthy Living Challenge</title>
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
   <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png')}}">
 </head>
 <body>
-  <h1 class="center">hlc</h1>
+  <!-- <h1 class="center">hlc</h1> -->
+  <img src="{{ url_for('static', filename='img/hlc_logo1.svg') }}" alt="Healthy Living Challenge" class="hlc-logo mx-auto">
   <p class="opener center">
-    Welcome to the healthy living challenge! <br />
-    Take the daily survey <a href="https://docs.google.com/forms/d/1i2twRKP0eM3SHpn2IIv5JiRjAbUTnKOaLPOKqVMlJpA/viewform">here.</a>
+    Welcome to the healthy living challenge!
   </p>
+  <div class="survey-link-container">
+    <a href="https://docs.google.com/forms/d/1i2twRKP0eM3SHpn2IIv5JiRjAbUTnKOaLPOKqVMlJpA/viewform" class="survey-link">Take the Survey!</a>
+  </div>
 
   {% for score in scores %}
   {% if score[1].ranking == 1 %}
-  <div class="special score flex p2 rounded">
+  <div class="special score flex p1 rounded">
   {% else %}
-  <div class="score flex p2 rounded">
+  <div class="score flex p1 rounded">
   {% endif %}
-    <div class="place col-2 p2">
-      <div class="center mx-auto">{{ score[1].ranking }}<span>{{ score[1].ordinal }}</span></div>
+    <div class="place col-2 p1 flex items-center justify-center">
+      <div class="place-container">
+        <div>
+          <div class="center mx-auto">{{ score[1].ranking }}<span>{{ score[1].ordinal }}</span></div>
+        </div>
+      </div>
     </div>
-    <div class="points col-3 p2 flex items-center justify-center">
+    <div class="points col-2 p1 flex items-center justify-center">
       <div>
         <div class="points-total flex h2 justify-center">{{ score[1].total_score}}</div>
         <div class="points-word center">POINTS</div>
@@ -36,16 +44,16 @@
     </div>
   </div>
   {% endfor %}
-  <div class="footer center h3 p4">&copy; Copyright {{ year }} <a href="http://spencerbywater.com">Spencer Bywater</a></div>
-  <script src="{{ url_for('static', filename='scripts/countUp.min.js') }}"></script>
+  <div class="footer center">&copy; Copyright {{ year }} <a href="http://spencerbywater.com">Spencer Bywater</a></div>
+
+<script src="{{ url_for('static', filename='scripts/countUp.min.js') }}"></script>
   <script>
     var selector = ".points-total";
     var special_scores = document.querySelectorAll(selector);
-    console.log(special_scores);
     for (var i = 0, len = special_scores.length; i < len; i++) {
       var new_id = special_scores[i].id = "cu" + i;
       var count_to = Number(special_scores[i].innerText);
-      var cu = new CountUp(new_id, 0, count_to);
+      var cu = new CountUp(new_id, 0, count_to, 0, 4, {separator: ''});
       cu.start();
     }
   </script>

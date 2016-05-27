@@ -8,14 +8,14 @@ body {
 }
 
 h1 {
-  font-size: 16rem;
+  // font-size: 16rem;
   font-weight: 700;
-  line-height: 1%;
+  // line-height: 1%;
 }
 
 .opener {
-  font-size: 1.5rem;
-  line-height: 3rem;
+  // font-size: 1.5rem;
+  // line-height: 3rem;
 }
 
 .score {
@@ -30,10 +30,10 @@ h1 {
   .place {
     color: $lime;
     div {
-      font-size: 5.5rem;
+      font-size: 3rem;
       font-weight: 700;
       span {
-        font-size: 2.25rem;
+        font-size: 1rem;
       }
     }
   }
@@ -43,12 +43,12 @@ h1 {
     vertical-align: middle;
 
     .points-total {
-      font-size: 4.5rem;
+      font-size: 2.5rem;
       font-weight: 700;
     }
 
     .points-word {
-      font-size: 1.25rem;
+      font-size: 0.75rem;
       line-height: 50%;
       text-transform: uppercase;
       color: $white;
@@ -57,7 +57,7 @@ h1 {
 
   .details {
     .name {
-      font-size: 3.5rem;
+      font-size: 2rem;
       font-style: italic;
     }
   }
@@ -66,4 +66,48 @@ h1 {
 a {
   color: $white;
   text-decoration: underline;
+}
+
+.survey-link-container {
+  text-align: center;
+}
+
+a.survey-link {
+  text-decoration: none;
+  background: $pink;
+  color: $white;
+  box-shadow: 0 6px $pink-shade;
+  transition: none;
+  -webkit-transition: none;
+  -moz-transition: none;
+  border-radius: 0.25rem;
+  display: inline-block;
+  padding: 1rem;
+  margin: .5rem 0rem 2rem 0rem;
+  // width: 150px;
+  // min-width: 50px;
+  text-align: center;
+  position: relative;
+
+  &:hover {
+    box-shadow: 0 4px $pink-shade;
+    top: 2px;
+  }
+
+  &:active {
+    box-shadow: 0 0 $pink-shade;
+    top: 6px;
+  }
+}
+
+.footer {
+  padding: 64px 0;
+}
+
+.hlc-logo {
+  display: block;
+  width: 200px;
+  height: 200px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
