@@ -15,7 +15,7 @@
   <link rel="apple-touch-startup-image" href="{{ url_for('static', filename='img/splash.png') }}">
 
 </head>
-<body>
+<body ontouchstart="">
   <!-- <h1 class="center">hlc</h1> -->
   <img src="{{ url_for('static', filename='img/hlc_logo1.svg') }}" alt="Healthy Living Challenge" class="hlc-logo mx-auto">
   <p class="opener center">
@@ -23,6 +23,7 @@
   </p>
   <div class="survey-link-container">
     <a href="https://docs.google.com/forms/d/1i2twRKP0eM3SHpn2IIv5JiRjAbUTnKOaLPOKqVMlJpA/viewform" class="survey-link">Take the Survey!</a>
+    <a href="" class="survey-link reload-btn"><img src="{{ url_for('static', filename='img/refresh.svg') }}" alt="Reload"></a>
   </div>
 
   {% for score in scores %}
