@@ -2,6 +2,7 @@ hlc/venv
 *.wsgi
 *.pyc
 *.scssc
+hlc/static/css/scss/.sass-cache
 
 # Compiled source #
 ###################
