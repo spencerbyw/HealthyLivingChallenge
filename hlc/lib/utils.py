@@ -28,7 +28,7 @@ def assemble_score_dict():
         day_score_pairs = score_dict['scores'][person[0]]['scores_by_date'].iteritems()
         all_scores = [pair[1] for pair in day_score_pairs]
         # Get top 20 scores
-        all_scores_curved = heapq.nlargest(20, all_scores)
+        all_scores_curved = heapq.nlargest(settings.CURVED_DAYS, all_scores)
         score_dict['scores'][person[0]]['total_score'] = sum(all_scores_curved)
 
     score_dict = _add_rankings(score_dict)
