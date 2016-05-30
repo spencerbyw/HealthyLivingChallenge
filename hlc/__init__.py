@@ -9,14 +9,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-	scores = utils.assemble_score_dict()
-	scores_arr = [person for person in scores['scores'].iteritems()]
-	for person in scores_arr:
-		person[1]['ordinal'] = \
-			utils.ordinal(person[1]['ranking'])
-	scores_arr.sort(key=lambda x: x[1]['ranking'])
-	year = datetime.datetime.now().year
-	return render_template('index.html', year=year, scores=scores_arr)
+	display_data = utils.build_display_data()
+	return render_template('index.html',
+						   year=display_data[0],
+						   scores=display_data[1])
 
 
 @app.route("/api/data", methods=['GET'])

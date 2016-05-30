@@ -33,6 +33,7 @@ h1 {
       color: #fcfcfc; }
   .score .details .name {
     font-size: 2rem;
+    padding-left: 1rem;
     font-style: italic; }
 
 a {

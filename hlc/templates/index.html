@@ -26,7 +26,7 @@
     <a href="https://docs.google.com/forms/d/1i2twRKP0eM3SHpn2IIv5JiRjAbUTnKOaLPOKqVMlJpA/viewform" class="survey-link">Take the Survey!</a>
     <a href="" class="survey-link reload-btn"><img src="{{ url_for('static', filename='img/refresh.svg') }}" alt="Reload"></a>
   </div>
-
+  {% if scores %}
   {% for score in scores %}
   {% if score[1].ranking == 1 %}
   <div class="special score flex p1 rounded animated bounceInDown">
@@ -53,6 +53,11 @@
     </div>
   </div>
   {% endfor %}
+  {% else %}
+  <p class="center">The contest will begin soon! <br>
+    This page will begin to display the scores once the first day's results have been logged. <br>
+    Make sure to take your survey every night <strong>BEFORE MIDNIGHT</strong>!</p>
+  {% endif %}
   <div class="footer center">&copy; Copyright {{ year }} <a href="http://spencerbywater.com">Spencer Bywater</a></div>
 
 <script src="{{ url_for('static', filename='scripts/countUp.min.js') }}"></script>

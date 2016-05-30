@@ -1,5 +1,6 @@
 import calculators as calc
 import csv
+import datetime
 import ranking
 import settings
 import urllib2
@@ -43,7 +44,7 @@ def csv_to_data_dict(rows):
     header_row = rows.pop()
     rows.reverse()
     # Process the rest of the rows
-    clean_rows = [row for row in rows if row[0]]
+    clean_rows = [row for row in rows if _valid_date(row[0])]
 
     rows_by_people = {}
     for row in clean_rows:
@@ -60,6 +61,19 @@ def csv_to_data_dict(rows):
             rows_by_people[name] = {full_date.split(' ')[0]: [row]}
 
     return rows_by_people
+
+
+def _valid_date(date):
+    # Parse datetime from date
+    # 5/23/2016 22:11:57
+    if date:
+        date_obj = datetime.datetime.strptime(date, '%m/%d/%Y %H:%M:%S')
+        print date_obj
+        if date_obj > settings.COMP_START_DATE and \
+            date_obj < settings.COMP_END_DATE:
+            return True
+        return False
+    return False
 
 
 def calculate_single(data_arr):
@@ -79,5 +93,17 @@ def _add_rankings(score_dict):
         score_dict['scores'][rank[1][0]]['ranking'] = rank[0]
     return score_dict
 
+
 def ordinal(n):
     return "%s" % ("tsnrhtdd"[(n/10%10!=1)*(n%10<4)*n%10::4])
+
+
+def build_display_data():
+    scores = assemble_score_dict()
+    scores_arr = [person for person in scores['scores'].iteritems()]
+    for person in scores_arr:
+        person[1]['ordinal'] = \
+            ordinal(person[1]['ranking'])
+    scores_arr.sort(key=lambda x: x[1]['ranking'])
+    year = datetime.datetime.now().year
+    return year, scores_arr
