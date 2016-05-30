@@ -1,6 +1,7 @@
 import calculators as calc
 import csv
 import datetime
+import heapq
 import ranking
 import settings
 import urllib2
@@ -26,7 +27,9 @@ def assemble_score_dict():
                 day_score
         day_score_pairs = score_dict['scores'][person[0]]['scores_by_date'].iteritems()
         all_scores = [pair[1] for pair in day_score_pairs]
-        score_dict['scores'][person[0]]['total_score'] = sum(all_scores)
+        # Get top 20 scores
+        all_scores_curved = heapq.nlargest(20, all_scores)
+        score_dict['scores'][person[0]]['total_score'] = sum(all_scores_curved)
 
     score_dict = _add_rankings(score_dict)
     return score_dict
@@ -68,7 +71,6 @@ def _valid_date(date):
     # 5/23/2016 22:11:57
     if date:
         date_obj = datetime.datetime.strptime(date, '%m/%d/%Y %H:%M:%S')
-        print date_obj
         if date_obj > settings.COMP_START_DATE and \
             date_obj < settings.COMP_END_DATE:
             return True
