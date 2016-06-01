@@ -52,6 +52,21 @@
       </div>
     </div>
   </div>
+  <div class="papertrail p1">
+    {% for day_score_pair in score[1].scores_by_date %}
+    <div class="papertrail-row flex">
+      <div class="col-3 p1 flex items-center justify-center">
+        {{ day_score_pair[0] }}
+      </div>
+      <div class="col-3 p1 flex items-center justify-center">
+        {{ day_score_pair[1] }}
+      </div>
+      <div class="col-6 p1 flex items-center">
+        
+      </div>
+    </div>
+    {% endfor %}
+  </div>
   {% endfor %}
   {% else %}
   <div class="noticeboard center p1 rounded">
@@ -77,6 +92,14 @@
       var cu = new CountUp(new_id, 0, count_to, 0, 4, {separator: ''});
       cu.start();
     }
+  </script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script>
+    $(function(){
+      $(".score").on("click",function(){
+        $(this).next().slideToggle();
+      });
+    });
   </script>
 </body>
 </html>

@@ -22,6 +22,7 @@ h1 {
   background-color: $row-dark;
   margin-bottom: 0.2rem;
   border-bottom: 0.2rem solid $light-orange;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
   &.special {
     background-color: $special-row-dark;
@@ -136,4 +137,16 @@ a.survey-link {
 
 .noticeboard {
   background-color: $special-row-dark;
+}
+
+.papertrail {
+  display: none;
+  
+  .papertrail-row {
+    border-bottom: 1px dashed darken($white, 40%);
+  }
+
+  .papertrail-row:last-child {
+    border-bottom: none;
+  }
 }

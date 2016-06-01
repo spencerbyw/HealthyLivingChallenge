@@ -10,7 +10,8 @@ h1 {
 .score {
   background-color: #1d2443;
   margin-bottom: 0.2rem;
-  border-bottom: 0.2rem solid #ffb376; }
+  border-bottom: 0.2rem solid #ffb376;
+  -webkit-tap-highlight-color: transparent; }
   .score.special {
     background-color: #2c3767; }
   .score .place {
@@ -91,3 +92,10 @@ a.survey-link {
 
 .noticeboard {
   background-color: #2c3767; }
+
+.papertrail {
+  display: none; }
+  .papertrail .papertrail-row {
+    border-bottom: 1px dashed #969696; }
+  .papertrail .papertrail-row:last-child {
+    border-bottom: none; }
