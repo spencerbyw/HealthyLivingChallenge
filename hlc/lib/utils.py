@@ -20,9 +20,15 @@ def assemble_score_dict():
     rows_by_people = csv_to_data_dict(rows)
     # We now have a legible list of scores to send to the calculator.
     for person in rows_by_people.iteritems():
+        temple_attendance = False
         score_dict['scores'][person[0]] = {'scores_by_date': {}}
-        for date_list in person[1].iteritems():
-            day_score = calculate_single(date_list[1][-1])
+        data_by_day = list(person[1].iteritems())
+        print data_by_day
+        data_by_day.sort(key=lambda x: x[0])
+        for date_list in data_by_day:
+            day_score = calculate_single(date_list[1][-1], temple_attendance)
+            if "go to the temple today?" in str(date_list[1][-1]):
+                temple_attendance = True
             score_dict['scores'][person[0]]['scores_by_date'][date_list[0]] = \
                 day_score
         day_score_pairs = score_dict['scores'][person[0]]['scores_by_date'].iteritems()
@@ -78,10 +84,10 @@ def _valid_date(date):
     return False
 
 
-def calculate_single(data_arr):
+def calculate_single(data_arr, temple_attendance):
     big_six = calc.big_six(data_arr[2:5])
     single_points = calc.single_points(data_arr[5])
-    bonus_points = calc.bonus_points(data_arr[6])
+    bonus_points = calc.bonus_points(data_arr[6], temple_attendance)
     accountability = calc.accountability(data_arr[7:])
     return sum([big_six, single_points, bonus_points, accountability])
 
@@ -106,6 +112,9 @@ def build_display_data():
     for person in scores_arr:
         person[1]['ordinal'] = \
             ordinal(person[1]['ranking'])
+        person[1]['scores_by_date'] = \
+            [pair for pair in person[1]['scores_by_date'].iteritems()]
+        person[1]['scores_by_date'].sort(key=lambda x: x[0])
     scores_arr.sort(key=lambda x: x[1]['ranking'])
     year = datetime.datetime.now().year
     return year, scores_arr

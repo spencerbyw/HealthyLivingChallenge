@@ -44,15 +44,14 @@ def single_points(answers):
     return partial_score
 
 
-def bonus_points(answers):
+def bonus_points(answers, temple_attendance):
     partial_score = 0
-    checkbox_answers = {"deliberately get 15+ minutes of exercise?": False,
-                        "go to the temple today?": False}
 
-    for pair in checkbox_answers.iteritems():
-        if pair[0] in answers:
-            checkbox_answers[pair[0]] = True
-            partial_score += 5
+    if "deliberately get 15+ minutes of exercise?" in answers:
+        partial_score += 5
+
+    if "go to the temple today?" in answers and not temple_attendance:
+        partial_score += 25
 
     return partial_score
 
