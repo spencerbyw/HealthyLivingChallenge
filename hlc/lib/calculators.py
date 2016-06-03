@@ -51,7 +51,7 @@ def bonus_points(answers, temple_attendance):
         partial_score += 5
 
     if "go to the temple today?" in answers and not temple_attendance:
-        partial_score += 25
+        partial_score += 0  # Now in extra_points
 
     return partial_score
 

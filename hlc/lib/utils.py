@@ -25,17 +25,24 @@ def assemble_score_dict():
         data_by_day = list(person[1].iteritems())
         print data_by_day
         data_by_day.sort(key=lambda x: x[0])
+
         for date_list in data_by_day:
             day_score = calculate_single(date_list[1][-1], temple_attendance)
             if "go to the temple today?" in str(date_list[1][-1]):
                 temple_attendance = True
             score_dict['scores'][person[0]]['scores_by_date'][date_list[0]] = \
                 day_score
+
+        score_dict['scores'][person[0]]['extra_points'] = \
+            25 if temple_attendance else 0
+
         day_score_pairs = score_dict['scores'][person[0]]['scores_by_date'].iteritems()
         all_scores = [pair[1] for pair in day_score_pairs]
         # Get top 20 scores
         all_scores_curved = heapq.nlargest(settings.CURVED_DAYS, all_scores)
-        score_dict['scores'][person[0]]['total_score'] = sum(all_scores_curved)
+        score_sum = sum(all_scores_curved) + \
+            score_dict['scores'][person[0]]['extra_points']
+        score_dict['scores'][person[0]]['total_score'] = score_sum
 
     score_dict = _add_rankings(score_dict)
     return score_dict

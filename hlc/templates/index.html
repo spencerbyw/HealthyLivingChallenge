@@ -62,10 +62,21 @@
         {{ day_score_pair[1] }}
       </div>
       <div class="col-6 p1 flex items-center">
-        
+
       </div>
     </div>
     {% endfor %}
+    <div class="papertrail-row flex">
+      <div class="col-3 p1 flex items-center justify-center">
+        Extra Points
+      </div>
+      <div class="col-3 p1 flex items-center justify-center">
+        {{ score[1].extra_points }}
+      </div>
+      <div class="col-6 p1 flex items-center">
+
+      </div>
+    </div>
   </div>
   {% endfor %}
   {% else %}
@@ -96,7 +107,7 @@
   <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
   <script>
     $(function(){
-      $(".score").on("click",function(){
+      $(".score").on("mousedown",function(){
         $(this).next().slideToggle();
       });
     });
