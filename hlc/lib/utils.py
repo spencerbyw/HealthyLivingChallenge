@@ -23,7 +23,6 @@ def assemble_score_dict():
         temple_attendance = False
         score_dict['scores'][person[0]] = {'scores_by_date': {}}
         data_by_day = list(person[1].iteritems())
-        print data_by_day
         data_by_day.sort(key=lambda x: x[0])
 
         for date_list in data_by_day:

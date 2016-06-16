@@ -10,6 +10,11 @@ app = Flask(__name__)
 @app.route("/")
 def hello():
 	display_data = utils.build_display_data()
+
+	for i, score_pair in enumerate(display_data[1]):
+		display_data[1][i][1]['scores_by_date'].sort(key=\
+			lambda x: datetime.datetime.strptime(x[0], '%m/%d/%Y'))
+
 	return render_template('index.html',
 						   year=display_data[0],
 						   scores=display_data[1])
