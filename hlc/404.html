@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Healthy Living Challenge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
+  <link rel=stylesheet type=text/css href="public/css/style.css">
+  <link rel="icon" type="image/png" href="public/img/favicon.png">
+  <link rel="apple-touch-icon" href="public/img/apple-icon.png">
+
+  <!-- Web app configuration -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="hlc">
+  <link rel="apple-touch-startup-image" href="public/img/splash.png">
+
+</head>
+<body ontouchstart="">
+  <img src="public/img/hlc_logo1.svg" alt="Healthy Living Challenge" class="hlc-logo mx-auto">
+  <h1 class="center">404</h1>
+  <h2 class="center">Page Not Found</h2>
+
+
+  <div class="footer center">&copy; Copyright <span class="js-year"></span> <a href="http://spencerbywater.com">Spencer Bywater</a></div>
+
+  <script>
+    const yearEl = document.querySelector('.js-year');
+    yearEl.innerHTML = new Date().getFullYear();
+  </script>
+  <script src="public/scripts/countUp.min.js"></script>
+  <script>
+    var selector = ".points-total";
+    var special_scores = document.querySelectorAll(selector);
+    for (var i = 0, len = special_scores.length; i < len; i++) {
+      var new_id = special_scores[i].id = "cu" + i;
+      var count_to = Number(special_scores[i].innerText);
+      var cu = new CountUp(new_id, 0, count_to, 0, 4, {separator: ''});
+      cu.start();
+    }
+  </script>
+</body>
+</html>
