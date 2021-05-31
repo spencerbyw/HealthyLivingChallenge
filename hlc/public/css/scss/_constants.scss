@@ -1,0 +1,17 @@
+// Colors
+$blue: #00a1d2;
+$blue-shade: darken($blue, 25%);
+$light-blue: lighten($blue, 10%);
+$dark: #070e2b;
+$pink: #fc2792;
+$pink-shade: darken($pink, 25%);
+$orange: #ff8929;
+$light-orange: lighten($orange, 15%);
+$lime: #bcff50;
+$white: #fcfcfc;
+
+$row-dark: lighten(desaturate($dark, 32%), 9%);
+$special-row-dark: lighten($row-dark, 10%);
+
+// Fonts
+$font-fam: 'Asap', 'Helvetica', sans-serif;
